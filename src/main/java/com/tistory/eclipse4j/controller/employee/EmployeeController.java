@@ -11,11 +11,17 @@ import com.tistory.eclipse4j.service.employee.EmployeeFindService;
 @RestController
 public class EmployeeController {
 
-	@Autowired
-	private EmployeeFindService employeeFindService;
+    @Autowired
+    private EmployeeFindService employeeFindService;
 
-	@GetMapping("/employees/{id}")
-	public Employee getHello(@PathVariable("id") Long id) {
-		return employeeFindService.findById(id);
-	}
+    @GetMapping(value = "/employees/{id}", produces = "application/json")
+    public Employee getEmployee(@PathVariable("id") Long id) {
+        Employee employee = employeeFindService.findById(id);
+        return employee;
+    }
+
+    @GetMapping(value = "/employees/cached/{id}", produces = "application/json")
+    public Employee getCachedEmployee(@PathVariable("id") Long id) {
+        return employeeFindService.findCachedById(id);
+    }
 }

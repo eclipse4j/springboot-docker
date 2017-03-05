@@ -20,3 +20,12 @@ create table employees (id bigint(20) not null auto_increment, name varchar(255)
 
 # 소스 image로 전환 후, WebApplication 과 Mysql연동 Image 실행하기 
 $ docker run -p 8080:8080 --name springboot-docker -t springboot-docker:0.0.1
+
+
+# SSM 적용하기
+DockerSpringappsSSMConfiguation.java
+
+// 기본 설정을 import한다.
+https://github.com/chandraonline/simple-spring-memcached/blob/master/simple-spring-memcached/src/main/resources/simplesm-context.xml
+
+// 그외 커스텀 설정 DockerSpringappsSSMConfiguration 
