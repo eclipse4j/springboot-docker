@@ -29,12 +29,14 @@ repositories {
 
 
 dependencies {
+	def ssmVersion = "3.6.1"
+
 	compileOnly('org.projectlombok:lombok')
 	
 	compile('mysql:mysql-connector-java')
-	compile group: 'com.google.code.simple-spring-memcached', name: 'simple-spring-memcached', version: '3.6.1'
-	compile group: 'com.google.code.simple-spring-memcached', name: 'xmemcached-provider', version: '3.6.1'
-	compile group: 'com.google.code.simple-spring-memcached', name: 'spring-cache', version: '3.6.1'
+	compile("com.google.code.simple-spring-memcached:simple-spring-memcached:${ssmVersion}")
+	compile("com.google.code.simple-spring-memcached:xmemcached-provider:${ssmVersion}")
+	compile("com.google.code.simple-spring-memcached:spring-cache:${ssmVersion}")
 	
 	
 	compile("org.springframework.boot:spring-boot-starter-web")

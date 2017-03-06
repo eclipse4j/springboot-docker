@@ -9,6 +9,7 @@ import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.ImportResource;
 
@@ -43,7 +44,7 @@ public class DockerSpringappsSSMConfiguration extends CachingConfigurerSupport {
     }
 
     @Bean
-    // @DependsOn("cacheBase")
+    @DependsOn("cacheBase")
     public CacheFactory cacheFactory() {
         CacheFactory cacheFactory = new CacheFactory();
         cacheFactory.setCacheName(cacheName);

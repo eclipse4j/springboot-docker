@@ -2,26 +2,19 @@ package com.tistory.eclipse4j.service.employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.google.code.ssm.api.ParameterValueKeyProvider;
 import com.google.code.ssm.api.ReadThroughSingleCache;
 import com.tistory.eclipse4j.entity.employee.Employee;
-import com.tistory.eclipse4j.entity.employee.EmployeeRepository;
 
 @Service
-@Transactional(readOnly = true)
-public class EmployeeFindService {
+public class EmployeeFindCachedService {
 
     @Autowired
-    private EmployeeRepository employeeRepository;
-
-    public Employee findById(Long id) {
-        return employeeRepository.findOne(id);
-    }
+    private EmployeeFindService employeeFindService;
 
     @ReadThroughSingleCache(namespace = "EmployeeFindService:findCachedById_v01", expiration = 600)
-    public Employee getById(@ParameterValueKeyProvider Long id) {
-        return employeeRepository.findOne(id);
+    public Employee findById(@ParameterValueKeyProvider Long id) {
+        return employeeFindService.findById(id);
     }
 }

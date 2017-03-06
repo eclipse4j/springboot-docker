@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tistory.eclipse4j.entity.employee.Employee;
+import com.tistory.eclipse4j.service.employee.EmployeeFindCachedService;
 import com.tistory.eclipse4j.service.employee.EmployeeFindService;
 
 @RestController
@@ -13,6 +14,8 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeFindService employeeFindService;
+    @Autowired
+    private EmployeeFindCachedService employeeFindCachedService;
 
     @GetMapping(value = "/employees/{id}", produces = "application/json")
     public Employee getEmployee(@PathVariable("id") Long id) {
@@ -22,6 +25,6 @@ public class EmployeeController {
 
     @GetMapping(value = "/employees/cached/{id}", produces = "application/json")
     public Employee getCachedEmployee(@PathVariable("id") Long id) {
-        return employeeFindService.findCachedById(id);
+        return employeeFindCachedService.findById(id);
     }
 }
