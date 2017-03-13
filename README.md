@@ -29,3 +29,8 @@ DockerSpringappsSSMConfiguation.java
 https://github.com/chandraonline/simple-spring-memcached/blob/master/simple-spring-memcached/src/main/resources/simplesm-context.xml
 
 // 그외 커스텀 설정 DockerSpringappsSSMConfiguration 
+
+# SSM 실행해보기
+http://localhost:8080/employees/cached/1
+http://localhost:8080/employees/cached/1/invalidate
+
